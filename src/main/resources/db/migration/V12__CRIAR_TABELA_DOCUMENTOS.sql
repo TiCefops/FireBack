@@ -1,0 +1,23 @@
+CREATE TABLE IF NOT EXISTS `documentos` (
+  `id` bigint(20) NOT NULL,
+  `categoriamilitar` varchar(255) DEFAULT NULL,
+  `circoinscricaomitlitar` varchar(255) DEFAULT NULL,
+  `cpf` varchar(255) DEFAULT NULL,
+  `dataemissao` datetime DEFAULT NULL,
+  `dataemissaoreservista` datetime DEFAULT NULL,
+  `dataemissaotitulo` datetime DEFAULT NULL,
+  `estadoemissor` varchar(255) DEFAULT NULL,
+  `estemissortitulo` varchar(255) DEFAULT NULL,
+  `nomedamae` varchar(255) DEFAULT NULL,
+  `nomedopai` varchar(255) DEFAULT NULL,
+  `orgaoemissor` varchar(255) DEFAULT NULL,
+  `orgaoemissorreservista` varchar(255) DEFAULT NULL,
+  `regiaomilitar` varchar(255) DEFAULT NULL,
+  `reservista` varchar(255) DEFAULT NULL,
+  `rg` varchar(255) DEFAULT NULL,
+  `secao` varchar(255) DEFAULT NULL,
+  `situacaomilitar` varchar(255) DEFAULT NULL,
+  `tituloeleitor` varchar(255) DEFAULT NULL,
+  `zona` varchar(255) DEFAULT NULL,
+  `alunos_id_id` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;

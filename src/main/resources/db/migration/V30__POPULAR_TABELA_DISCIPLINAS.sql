@@ -1,0 +1,28 @@
+INSERT INTO `disciplinas`
+(`id`,`name`,`carga_estagio`,`carga_teoria`,`carga_total`,`requisito_estagio`,`valor`)
+VALUES
+(1,"Ética Profissional I",0,20,20,0,0.00),
+(2,"Anatomia e Fisiologia Humana",0,60,60,0,0.00),
+(3,"Nutrição e Dietética",0,20,20,0,0.00),
+(4,"Microbiologia e Parasitologia",0,40,40,0,0.00),
+(5,"Farmacologia I",0,60,60,0,0.00),
+(6,"Técnicas Básicas de Enfermagem",80,100,180,1,300.00),
+(7,"Enfermagem em Clínica Médica",80,80,160,1,300.00),
+(8,"Enfermagem em Clínica Cirúrgica",80,80,160,1,300.00),
+(9,"Enfermagem em Pronto Socorro",44,40,84,1,300.00),
+(10,"Enfermagem Ginecológica e Obstetrícia",44,40,84,1,300.00),
+(11,"Enfermagem em Pediatria",44,40,84,1,300.00),
+(12,"Enfermagem em Saúde Pública I",28,40,68,1,300.00),
+(13,"Procedimentos de Enfermagem",60,50,110,1,300.00),
+(14,"Assistência ao Paciente Cirúrgico",60,80,140,1,300.00),
+(15,"Cuidados ao Paciente Crítico",60,80,140,1,300.00),
+(16,"Administração de Unidade de Enfermagem",60,80,140,1,300.00),
+(17,"Biossegurança",0,20,20,0,0.00),
+(18,"Enfermagem em Ortopedia",0,20,20,0,0.00),
+(19,"Enfermagem em Neonatologia",0,40,40,0,0.00),
+(20,"Enfermagem em Assistência Domiciliar",0,40,40,0,0.00),
+(21,"Trabalho de Conclusão do Curso",0,32,32,0,0.00),
+(22,"Ética Profissional IIa",0,40,40,0,0.00),
+(23,"Farmacologia II",0,80,80,0,0.00),
+(24,"Enfermagem em Psiquiatria",0,40,40,0,0.00),
+(25,"Enfermagem em Saúde Pública II",0,40,40,0,0.00);
