@@ -21,6 +21,12 @@ public interface RequerimentoRepository extends  JpaRepository<Requerimentos, Lo
 			@Param("responsavel") String responsavel,
 			@Param("status") String status
 			);
+	@Modifying
+	@Query("UPDATE Requerimentos r SET r.Status = :status, r.Concluido=1  WHERE r.id =:id")
+	void setStatus(
+			@Param("id") Long id,
+			@Param("status") String status
+	);
 	
 
 	@Query(value = "SELECT R FROM Requerimentos as R  WHERE R.aluno.Id = ?1")

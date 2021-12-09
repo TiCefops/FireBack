@@ -27,16 +27,16 @@ public class Requerimentos implements Serializable {
 	@Column(columnDefinition ="date default '2021-12-01'"  )
 	private Date Entregue;
 	@ManyToOne()
-	@JoinColumn(nullable = false,name = "aluno_id")
+	@JoinColumn(name = "aluno_id")
 	private AlunosData aluno;
 	@JoinColumn(name = "nome_Aluno")
 	private String nomeAluno;
 	private String idaluno;
-	@Column(nullable = false,columnDefinition = "tinyint(1) default 0" )
+	@Column(columnDefinition = "tinyint(1) default 0" )
 	private Boolean Concluido;
-	@Column(nullable = false,columnDefinition = "varchar(20) default 'Aberto'")
+	@Column(columnDefinition = "varchar(20) default 'Aberto'")
 	private String Status;
-	@Column(nullable = false,columnDefinition = "varchar(255) default 'ND'")
+	@Column(columnDefinition = "varchar(255) default 'ND'")
 	private String Responsavel;
 	@ManyToOne()
 	@JoinColumn(name = "tiporequerimento_id")
@@ -48,9 +48,11 @@ public class Requerimentos implements Serializable {
 	@UpdateTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataatualizacao;
-	@Column(nullable = false,columnDefinition = "varchar(50) default 'Aguardando'")
+	@Column(columnDefinition = "varchar(50) default 'Aguardando'")
 	private String statusPagameto;
 	private String observacao;
+	@Column(columnDefinition = "varchar(20)")
+	private String protocolo;
 
 
 
