@@ -34,7 +34,7 @@ System.out.println(requerimento);
 	public ResponseEntity<List<RequerimentoVo>> obterRequerimetosAlunoid(@PathVariable String id) {
 		 List<RequerimentoVo> optRequerimento = service.buscarPorIdAluno(id);
 
-		if (optRequerimento.equals(null)) {
+		if (optRequerimento==null) {
 			return ResponseEntity.noContent().build();
 		}
 		return ResponseEntity.ok().body(optRequerimento);
@@ -43,7 +43,7 @@ System.out.println(requerimento);
 	public ResponseEntity<RequerimentoVo> obterRequerimetosId(@PathVariable Long id) {
 		RequerimentoVo optRequerimento = service.buscarRequerimentoId(id);
 
-		if (optRequerimento.equals(null)) {
+		if (optRequerimento==null) {
 			return ResponseEntity.noContent().build();
 		}
 		return ResponseEntity.ok().body(optRequerimento);
@@ -80,7 +80,7 @@ System.out.println(requerimento);
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<RequerimentoVo> alterarReqerimento(@PathVariable Long id, @RequestBody RequerimentoVo req) {
 		 RequerimentoVo requerimentoVo=service.buscarRequerimentoId(id);
-		if (requerimentoVo.equals(null)){
+		if (requerimentoVo==null){
 			ResponseEntity.notFound();
 		}
 		var alterado=service.alterarRequerimento(req);

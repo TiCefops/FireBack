@@ -2,6 +2,8 @@ package com.br.cefops.cefopsBD.Controller.GestaoEscolar;
 import java.util.List;
 import java.util.Optional;
 
+import com.br.cefops.cefopsBD.Services.escola.CursoService;
+import com.br.cefops.cefopsBD.data.vo.v1.gestaoEscolar.Curso.cursoVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,11 +18,13 @@ public class CursoController {
 	
 	@Autowired
 	CursoRepository cursointerface;
+	@Autowired
+	CursoService service;
 	
 
 	@PostMapping(consumes = "application/json")
-	public CursoData criarCurso(@RequestBody CursoData curso) {
-		CursoData cursos =cursointerface.save(curso);
+	public cursoVo criarCurso(@RequestBody cursoVo curso) {
+		cursoVo cursos =service.novoCurso(curso);
 		return cursos;
 	}
 
@@ -45,16 +49,16 @@ public class CursoController {
 
 	@ResponseBody
 	@PutMapping(value = "/{id}")
-	public CursoData alterarCursos(@PathVariable Integer id, @RequestBody CursoData curso) {
-		CursoData cursos = cursointerface.save(curso);
+	public cursoVo alterarCursos(@PathVariable Integer id, @RequestBody cursoVo curso) {
+		cursoVo cursos =service.novoCurso(curso);
 		return cursos;
 		
 		
 	}
 
 	@GetMapping()
-	public List<CursoData> obterCursos() {
-		List<CursoData> cursos = cursointerface.findAll();
+	public List<cursoVo> obterCursos() {
+		List<cursoVo> cursos = service.buscarTodos();
 
 		return  cursos;
 	}
