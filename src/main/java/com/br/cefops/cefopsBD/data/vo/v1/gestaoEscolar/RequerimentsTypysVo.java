@@ -17,10 +17,7 @@ public class RequerimentsTypysVo implements Serializable {
 	private String name;
 	private String grupo;
 	private Integer diasPentregar;
-
-	
-	
-	
-	
+	private double valor;
+	private String linkpagamento;
 
 }

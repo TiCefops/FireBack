@@ -8,6 +8,7 @@ import com.br.cefops.cefopsBD.repository.GestaoEscolar.RequerimentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 @Service
@@ -77,4 +78,13 @@ public class RequerimentoService {
 //        requerimento.getConcluido();
 //        return requerimento;
 //    }
+
+    @Transactional
+    public void setResponsavel(Long id, String responsavel, String status){
+        repository.setResponsavel(id,responsavel,status);
+    }
+    @Transactional
+    public void setStatus(Long id,String status){
+        repository.setStatus(id,status);
+    }
 }

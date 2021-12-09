@@ -8,16 +8,10 @@ import com.br.cefops.cefopsBD.Services.escola.RequerimentoService;
 import com.br.cefops.cefopsBD.data.vo.v1.gestaoEscolar.RequerimentoVo;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "Requerimetos Controle",description = "Responsavel por controlar todoas as requisições de requerimentos")
 @RestController
@@ -30,10 +24,8 @@ public class RequerimentosController {
 	@ResponseBody
 	@PostMapping
 	public ResponseEntity<RequerimentoVo> novoRequerimento(@RequestBody RequerimentoVo requerimento) {
-		RequerimentoVo optRequerimento = service.buscarRequerimentoId(requerimento.getId());
-		if (optRequerimento.equals(null))
-			return ResponseEntity.noContent().build();
-		service.novoRequerimento(optRequerimento);
+System.out.println(requerimento);
+		service.novoRequerimento(requerimento);
 
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
@@ -64,6 +56,26 @@ public class RequerimentosController {
 
 		return ResponseEntity.ok(requerimentos);
 	}
+    @PatchMapping
+	public ResponseEntity<HttpStatus> SetResponsavel(
+			@RequestParam(value = "id") Long id,
+			@RequestParam(value = "responsavel") String responsavel,
+			@RequestParam (value = "status") String status){
+		service.setResponsavel(id,responsavel,status);
+
+
+		return ResponseEntity.ok().build();
+	}
+	@PatchMapping(value = "/status")
+	public ResponseEntity<HttpStatus> SetStatus(
+			@RequestParam(value = "id") Long id,
+			@RequestParam (value = "status") String status){
+		service.setStatus(id,status);
+
+
+		return ResponseEntity.ok().build();
+	}
+
 
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<RequerimentoVo> alterarReqerimento(@PathVariable Long id, @RequestBody RequerimentoVo req) {
