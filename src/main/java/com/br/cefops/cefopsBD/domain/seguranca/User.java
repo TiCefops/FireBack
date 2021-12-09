@@ -18,6 +18,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -25,6 +26,7 @@ import com.br.cefops.cefopsBD.domain.escola.AlunosData;
 
 
 @Entity
+@Data
 @Table(name = "users")
 public class User implements UserDetails, Serializable  {
 
@@ -77,119 +79,6 @@ private static final long serialVersionUID = 1L;
 
 	
 	
-	
-	public AlunosData getAlunos() {
-		return alunos;
-	}
-
-
-
-
-	public void setAlunos(AlunosData alunos) {
-		this.alunos = alunos;
-	}
-
-
-
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	
-
-	public String getFristName() {
-		return fristName;
-	}
-
-
-
-
-	public void setFristName(String fristName) {
-		this.fristName = fristName;
-	}
-
-
-
-
-	public String getLastName() {
-		return LastName;
-	}
-
-
-
-
-	public void setLastName(String lastName) {
-		LastName = lastName;
-	}
-
-
-
-
-	public Boolean getAccountNonExpired() {
-		return accountNonExpired;
-	}
-
-	public void setAccountNonExpired(Boolean accountNonExpired) {
-		this.accountNonExpired = accountNonExpired;
-	}
-
-	public Boolean getAccountNonLocked() {
-		return accountNonLocked;
-	}
-
-	public void setAccountNonLocked(Boolean accountNonLocked) {
-		this.accountNonLocked = accountNonLocked;
-	}
-
-	public Boolean getCredentialsNonExpired() {
-		return credentialsNonExpired;
-	}
-
-	public void setCredentialsNonExpired(Boolean credentialsNonExpired) {
-		this.credentialsNonExpired = credentialsNonExpired;
-	}
-
-	public Boolean getEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(Boolean enabled) {
-		this.enabled = enabled;
-	}
-
-	public List<Permission> getPermissions() {
-		return permissions;
-	}
-
-	public void setPermissions(List<Permission> permissions) {
-		this.permissions = permissions;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
