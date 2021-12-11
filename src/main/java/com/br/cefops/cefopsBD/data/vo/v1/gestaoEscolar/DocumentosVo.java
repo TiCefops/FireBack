@@ -1,6 +1,7 @@
 package com.br.cefops.cefopsBD.data.vo.v1.gestaoEscolar;
 
 import com.br.cefops.cefopsBD.domain.escola.AlunosData;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
@@ -31,6 +32,7 @@ public class DocumentosVo {
     private String situacaomilitar;
     private String nomedamae;
     private String nomedopai;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private AlunosData alunosId;
 
 }

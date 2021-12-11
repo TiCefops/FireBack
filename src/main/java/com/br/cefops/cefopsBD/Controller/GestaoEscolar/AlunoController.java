@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -89,9 +90,9 @@ public ResponseEntity  obterAlunos(
 
 	@ResponseBody
 	@PostMapping(consumes = "application/json")
-	public AlunosVo criarAluno(@RequestBody AlunosVo aluno) {
-		AlunosVo alunos=serviceAlunoServices.creatAluno(aluno);
-		return alunos;
+	public ResponseEntity<AlunosVo> criarAluno(@RequestBody AlunosVo aluno) {
+		ResponseEntity<AlunosVo> alunos=serviceAlunoServices.creatAluno(aluno);
+		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 
 	@GetMapping(value = "/{id}")

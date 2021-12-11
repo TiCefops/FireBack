@@ -23,6 +23,7 @@ public class AlunosVo extends RepresentationModel<AlunosVo> implements Serializa
 	@JsonProperty("id")
 	private String key;
 	private String Name;
+	private  String cpf;
 	private	Date dataNanscimento;
 	private	String LastName;
 	private	String Nacionalidade;

@@ -8,7 +8,7 @@ import com.br.cefops.cefopsBD.domain.escola.Documentos.Endereco;
 
 public interface EndrerecoRepository extends JpaRepository<Endereco,Long >  {
 	
-	@Query(value = "SELECT E FROM Endereco as E  WHERE E.alunoId.id = ?1")
+	@Query(value = "SELECT E FROM Endereco as E  WHERE E.aluno.id = ?1")
     Endereco buscarAlunoId(String id);
 
 }
