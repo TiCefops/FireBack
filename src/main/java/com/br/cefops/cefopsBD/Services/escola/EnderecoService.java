@@ -18,17 +18,36 @@ public class EnderecoService {
 	
 	public EnderecoVo NovoEndereco(EnderecoVo enderecoVo) {
 		var entity=DozerConvert.parseObject(enderecoVo, Endereco.class);
-		var vo=DozerConvert.parseObject(repository.save(entity), EnderecoVo.class);
+		EnderecoVo vo=DozerConvert.parseObject(repository.save(entity), EnderecoVo.class);
+
 		return vo;
 	}
 	
 	public EnderecoVo BuscarEnderecoPorAlunoID(String id) {
 		var entity=repository.buscarAlunoId(id);
-		return DozerConvert.parseObject(entity, EnderecoVo.class);
+		if (entity==null){
+			EnderecoVo dataNull=new EnderecoVo();
+			dataNull.setBairro("Não cadastrado");
+			dataNull.setCep("00000000");
+			dataNull.setCidade("Não cadastrado");
+			dataNull.setNumero("000");
+			dataNull.setComplemento("Não cadastrado");
+			dataNull.setRua("Não cadastrado");
+			dataNull.setUf("ND");
+			dataNull.setEstado("Não cadastrado");
+			dataNull.setId(0L);
+
+			return dataNull;
+		}else {
+			EnderecoVo data=DozerConvert.parseObject(entity, EnderecoVo.class);
+			return data;
+		}
+
+
 		
 	}
 	public EnderecoVo AtualizarEndereco(EnderecoVo endereco) {
-		var entity=repository.findById(endereco.getId()).orElseThrow(()->
+		Endereco entity=repository.findById(endereco.getId()).orElseThrow(()->
 		new ResourceNotFoundException("Não Encontramos Nehum Endereço Com esta ID"));
 		
 		entity.setBairro(endereco.getBairro());
@@ -44,6 +63,7 @@ public class EnderecoService {
 		return vo;
 		
 	}
-	
+
+
 	
 }

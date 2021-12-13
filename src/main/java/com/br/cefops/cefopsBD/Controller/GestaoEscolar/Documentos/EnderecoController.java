@@ -22,12 +22,17 @@ public class EnderecoController {
 	EnderecoService service;
 	
 	@GetMapping(value = "/{id}")
-	public EnderecoVo buscarPorID(@PathVariable("id") String id) {	
+	public EnderecoVo buscarPorID(
+			@PathVariable("id") String id) {
 		return service.BuscarEnderecoPorAlunoID(id) ;
 	}
 	
 	@PostMapping(consumes = "application/json")
 	public EnderecoVo novoEndereco(@RequestBody EnderecoVo endereco) {
+		System.out.println(endereco.getAluno().getId());
+		System.out.println(endereco.getUf().length());
+
+
 		return service.NovoEndereco(endereco);
 	}
 	
