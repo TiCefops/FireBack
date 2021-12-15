@@ -36,10 +36,7 @@ public class DocumentosData  implements Serializable {
     private String situacaomilitar;
     private String nomedamae;
     private String nomedopai;
-
     @OneToOne()
-    @Setter
-    @Getter(value = AccessLevel.NONE)
     private AlunosData alunosId;
 
 }

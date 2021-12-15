@@ -1,11 +1,10 @@
 package com.br.cefops.cefopsBD.data.vo.v1.gestaoEscolar;
 
 import com.br.cefops.cefopsBD.domain.escola.AlunosData;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AccessLevel;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+
 
 
 import java.util.Date;
@@ -23,12 +22,18 @@ public class DocumentosVo {
     private String secao;
     private Date dataemissaotitulo;
     private String estemissortitulo;
+    @JsonIgnore
     private String reservista;
+    @JsonIgnore
     private String categoriamilitar;
+    @JsonIgnore
     private String circoinscricaomitlitar;
     private String regiaomilitar;
+    @JsonIgnore
     private Date dataemissaoreservista;
+    @JsonIgnore
     private String orgaoemissorreservista;
+    @JsonIgnore
     private String situacaomilitar;
     private String nomedamae;
     private String nomedopai;

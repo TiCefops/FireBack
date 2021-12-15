@@ -29,17 +29,10 @@ public class DocumentosService {
 
     };
     public  DocumentosVo novoDocumento(DocumentosVo documentosVo){
-        var repo=repository.buscarAlunoId(documentosVo.getAlunosId().getId());
-        if (repo.getAluno().getId()==documentosVo.getAlunosId().getId()){
 
-            throw  new ResourceDuplicateException("Documentos já cadastrado ");
-        }
-        else {
             var entity=DozerConvert.parseObject(documentosVo,DocumentosData.class);
-         var doc=   DozerConvert.parseObject(repository.save(entity), DocumentosData.class);
+            var doc=   DozerConvert.parseObject(repository.save(entity), DocumentosData.class);
             return documentosVo;
-        }
-
 
     };
 }
