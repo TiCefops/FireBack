@@ -12,11 +12,15 @@ import com.br.cefops.cefopsBD.domain.escola.Requerimentos.Requerimentos;
 import com.br.cefops.cefopsBD.domain.seguranca.User;
 import com.br.cefops.cefopsBD.domain.escola.Documentos.DocumentosData;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.Getter;
 import org.hibernate.annotations.CreationTimestamp;
 
 
 @Entity
 @Table(name = "alunos")
+@Data
 public class AlunosData implements Serializable  {
 	
 	private static final long serialVersionUID = 1L;
@@ -42,10 +46,12 @@ public class AlunosData implements Serializable  {
 	@OneToOne(cascade = CascadeType.REMOVE)
 	private Endereco endereco;
 	@OneToMany(mappedBy = "aluno")
+	@Getter(AccessLevel.NONE)
 	private List<Requerimentos>  requerimentos;
 	@OneToOne(mappedBy = "alunos")
 	private User user;
 	@ManyToMany(mappedBy = "aluno",cascade = CascadeType.REMOVE)
+	@Getter(AccessLevel.NONE)
 	private List<CursoData> cursosId;
 	@OneToOne(mappedBy = "alunosId",cascade = CascadeType.REMOVE)
 	private DocumentosData documentos;
@@ -54,163 +60,4 @@ public class AlunosData implements Serializable  {
 	@Column(columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")
 	private Date datacadastro;
 
-	public DocumentosData getDocumentos() {
-		return documentos;
-	}
-
-	public void setDocumentos(DocumentosData documentos) {
-		this.documentos = documentos;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public String getId() {
-		return Id;
-	}
-
-	public void setId(String id) {
-		Id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Date getDataNanscimento() {
-		return dataNanscimento;
-	}
-
-	public void setDataNanscimento(Date dataNanscimento) {
-		this.dataNanscimento = dataNanscimento;
-	}
-
-	public String getLastName() {
-		return LastName;
-	}
-
-	public void setLastName(String lastName) {
-		LastName = lastName;
-	}
-
-	public String getNacionalidade() {
-		return Nacionalidade;
-	}
-
-	public void setNacionalidade(String nacionalidade) {
-		Nacionalidade = nacionalidade;
-	}
-
-	public String getEmail() {
-		return Email;
-	}
-
-	public void setEmail(String email) {
-		Email = email;
-	}
-
-	public String getGenero() {
-		return genero;
-	}
-
-	public void setGenero(String genero) {
-		this.genero = genero;
-	}
-
-	public String getEstadoCivil() {
-		return estadoCivil;
-	}
-
-	public void setEstadoCivil(String estadoCivil) {
-		this.estadoCivil = estadoCivil;
-	}
-
-	public String getTeleFoneCelular() {
-		return TeleFoneCelular;
-	}
-
-	public void setTeleFoneCelular(String teleFoneCelular) {
-		TeleFoneCelular = teleFoneCelular;
-	}
-
-	public String getTeleFone() {
-		return TeleFone;
-	}
-
-	public void setTeleFone(String teleFone) {
-		TeleFone = teleFone;
-	}
-
-	public Boolean getEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(Boolean enabled) {
-		this.enabled = enabled;
-	}
-
-	public String getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
-
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
-
-
-	public void setRequerimentos(List<Requerimentos> requerimentos) {
-		this.requerimentos = requerimentos;
-	}
-
-
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public List<CursoData> getCursosId() {
-		return cursosId;
-	}
-
-	public void setCursosId(List<CursoData> cursos) {
-		this.cursosId = cursos;
-	}
-
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (!(o instanceof AlunosData)) return false;
-		AlunosData that = (AlunosData) o;
-		return Objects.equals(Id, that.Id) && Objects.equals(name, that.name) && Objects.equals(dataNanscimento, that.dataNanscimento) && Objects.equals(LastName, that.LastName) && Objects.equals(Nacionalidade, that.Nacionalidade) && Objects.equals(Email, that.Email) && Objects.equals(genero, that.genero) && Objects.equals(cpf, that.cpf) && Objects.equals(estadoCivil, that.estadoCivil) && Objects.equals(TeleFoneCelular, that.TeleFoneCelular) && Objects.equals(TeleFone, that.TeleFone) && Objects.equals(enabled, that.enabled) && Objects.equals(photo, that.photo) && Objects.equals(endereco, that.endereco) && Objects.equals(requerimentos, that.requerimentos) && Objects.equals(user, that.user) && Objects.equals(cursosId, that.cursosId);
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(Id, name, dataNanscimento, LastName, Nacionalidade, Email, genero, cpf, estadoCivil, TeleFoneCelular, TeleFone, enabled, photo, endereco, requerimentos, user, cursosId);
-	}
-
-	public Date getDatacadastro() {
-		return datacadastro;
-	}
-
-	public void setDatacadastro(Date datacadastro) {
-		this.datacadastro = datacadastro;
-	}
 }
