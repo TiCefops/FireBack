@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface DocumentosRepository  extends JpaRepository<DocumentosData,Long> {
 
-    @Query(value = "SELECT E FROM DocumentosData as E  WHERE E.alunosId.id = ?1")
-    Endereco buscarAlunoId(String id);
+    @Query(value = "SELECT E FROM DocumentosData as E  WHERE E.alunosId.id  =:id")
+    DocumentosData buscarAlunoId(String id);
 
 }
