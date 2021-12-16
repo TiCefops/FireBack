@@ -14,8 +14,7 @@ import com.br.cefops.cefopsBD.repository.GestaoEscolar.RequerimentTypeRepository
 public class RequerimentTaypeService {
 	@Autowired
 	RequerimentTypeRepository repository;
-	
-	
+
 	public List<RequerimentsTypysVo> EncontrarTodosTiposRequerimentos() {
 	
 		return DozerConvert.parseListObjects(repository.findAll(), RequerimentsTypysVo.class);
