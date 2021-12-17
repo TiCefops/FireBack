@@ -24,7 +24,6 @@ public class RequerimentosController {
 	@ResponseBody
 	@PostMapping
 	public ResponseEntity<RequerimentoVo> novoRequerimento(@RequestBody RequerimentoVo requerimento) {
-System.out.println(requerimento);
 		service.novoRequerimento(requerimento);
 
 		return ResponseEntity.status(HttpStatus.CREATED).build();

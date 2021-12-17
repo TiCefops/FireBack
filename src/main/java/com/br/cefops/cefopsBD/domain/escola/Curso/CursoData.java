@@ -1,5 +1,6 @@
 package com.br.cefops.cefopsBD.domain.escola.Curso;
 import com.br.cefops.cefopsBD.domain.escola.AlunosData;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.util.List;
@@ -8,9 +9,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "curso")
+@Data
 public class CursoData implements Serializable{
-	
-	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,16 +22,4 @@ public class CursoData implements Serializable{
 	@ManyToMany()
 	private List <DisciplinasData> disciplinas;
 
-
-
-
-
-	
-	
-	
-	
-	
-	
-	
-	
 }
