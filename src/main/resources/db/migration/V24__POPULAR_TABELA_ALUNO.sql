@@ -1,5 +1,5 @@
 
-INSERT INTO `escolaalmeidas01`.`alunos`
+INSERT INTO `alunos`
 (`id`,`email`,`last_name`,`nacionalidade`,`tele_fone`,`tele_fone_celular`,`cpf`,`data_nanscimento`,`enabled`,`estado_civil`,`name`,`foto_usuario`,`genero`,`endereco_id`)
 VALUES
 ('testeMock','ti4.eas@gmail.com',
