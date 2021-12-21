@@ -24,8 +24,7 @@ public class CursoController {
 
 	@PostMapping(consumes = "application/json")
 	public cursoVo criarCurso(@RequestBody cursoVo curso) {
-		cursoVo cursos =service.novoCurso(curso);
-		return cursos;
+		return service.novoCurso(curso);
 	}
 
 	@GetMapping("/{id}")
@@ -50,17 +49,15 @@ public class CursoController {
 	@ResponseBody
 	@PutMapping(value = "/{id}")
 	public cursoVo alterarCursos(@PathVariable Integer id, @RequestBody cursoVo curso) {
-		cursoVo cursos =service.novoCurso(curso);
-		return cursos;
+
+		return service.novoCurso(curso);
 		
 		
 	}
 
 	@GetMapping()
 	public List<cursoVo> obterCursos() {
-		List<cursoVo> cursos = service.buscarTodos();
-
-		return  cursos;
+		return  service.buscarTodos();
 	}
 
 }
