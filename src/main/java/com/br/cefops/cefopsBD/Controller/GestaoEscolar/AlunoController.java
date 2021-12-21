@@ -25,13 +25,11 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @RestController
 @RequestMapping("/api/v1/alunos")
 public class AlunoController {
-
-
 	@Autowired
 	AlunoServices serviceAlunoServices;
 	
 	@GetMapping(produces = { "application/json"})
-public ResponseEntity  obterAlunos(
+public ResponseEntity<?>  obterAlunos(
 		@RequestParam(value = "page",defaultValue = "0") int page,
 		@RequestParam(value = "limit",defaultValue = "15") int limit,
 		@RequestParam(value = "direction",defaultValue = "asc") String direction) {
@@ -56,7 +54,7 @@ public ResponseEntity  obterAlunos(
 		return ResponseEntity.ok(alunos);
 	}
 	@GetMapping(value = "/buscarnome/{nome}",produces = { "application/json"})
-	public ResponseEntity  obterAlunosPorNome(
+	public ResponseEntity<?>  obterAlunosPorNome(
 			@PathVariable("nome") String nome,
 			@RequestParam(value = "page",defaultValue = "0") int page,
 			@RequestParam(value = "limit",defaultValue = "15") int limit,
@@ -76,7 +74,7 @@ public ResponseEntity  obterAlunos(
 				linkTo(methodOn(DocumentosController.class).buscarPorID(aluno.getKey())).withRel("Documentos"),
 				linkTo(methodOn(NotasController.class).obterNotasId(aluno.getKey())).withRel("Notas")));
 		try {
-			if (alunos != null) {
+			if (!alunos.isEmpty()) {
 				return ResponseEntity.ok(alunos);
 
 			}
@@ -91,7 +89,7 @@ public ResponseEntity  obterAlunos(
 	@ResponseBody
 	@PostMapping(consumes = "application/json")
 	public ResponseEntity<AlunosVo> criarAluno(@RequestBody AlunosVo aluno) {
-		ResponseEntity<AlunosVo> alunos=serviceAlunoServices.creatAluno(aluno);
+		serviceAlunoServices.creatAluno(aluno);
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 
@@ -123,15 +121,15 @@ public ResponseEntity  obterAlunos(
 
 	@PutMapping(value = "/{id}")
 	public AlunosVo alterarAluno(@PathVariable String id, @RequestBody AlunosVo aluno) {
-		AlunosVo alunos =serviceAlunoServices.updateAluno(aluno);
-		return alunos;
+
+		return serviceAlunoServices.updateAluno(aluno);
 		
 	}
 
 	@PutMapping(value = "/v2/{id}")
 	public AlunosVo atualizarAlunos(@RequestBody AlunosVo aluno) {
-		AlunosVo alunos =serviceAlunoServices.updateAluno(aluno);
-		return alunos;
+
+		return serviceAlunoServices.updateAluno(aluno);
 		
 	}
 //	@PatchMapping(value = "/{id}")

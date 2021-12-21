@@ -17,12 +17,17 @@ public class NotasServices {
 
     public List<NotasVo> EncontrarNotasPorID(String id) {
         var dados=repository.findAllByAlunoId(id);
-        var notas= DozerConvert.parseListObjects(dados,NotasVo.class);
-        return notas ;
+
+        return DozerConvert.parseListObjects(dados,NotasVo.class);
     }
 
-    public  NotasAlunosData SetarNota(NotasAlunosData notas){
-        return repository.save(notas);
+    public  NotasVo SetarNota(NotasVo notas){
+        NotasVo nota=DozerConvert.parseObject(notas,NotasVo.class);
+        NotasAlunosData notasAlunosData=DozerConvert.parseObject(nota,NotasAlunosData.class);
+        repository.save(notasAlunosData);
+
+
+        return nota;
     }
 
     public  NotasAlunosData AtualizarNotas(NotasAlunosData notas){

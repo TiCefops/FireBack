@@ -26,14 +26,14 @@ public class NotasController {
             return ResponseEntity.badRequest().build();
         }
         @PutMapping(value = "/id")
-        public NotasAlunosData alterarNota(@PathVariable String id, @RequestBody NotasAlunosData nota) {
-            NotasAlunosData notas =service.SetarNota(nota);
+        public NotasVo alterarNota(@PathVariable String id, @RequestBody NotasVo nota) {
+            NotasVo notas =service.SetarNota(nota);
             return notas;
 
         }
     @PostMapping(consumes = "application/json")
-    public NotasAlunosData novaNota(@RequestBody NotasAlunosData nota) {
-        NotasAlunosData notas=service.SetarNota(nota);
-        return notas;
+    public NotasVo novaNota(@RequestBody NotasVo nota) {
+
+        return service.SetarNota(nota);
     }
 }

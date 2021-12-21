@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.br.cefops.cefopsBD.domain.escola.Requerimentos.Requerimentos;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -22,11 +23,11 @@ public interface RequerimentoRepository extends  JpaRepository<Requerimentos, Lo
 			@Param("status") String status
 			);
 	@Modifying
-	@Query("UPDATE Requerimentos r SET r.Status = :status, r.Concluido=1  WHERE r.id =:id")
+	@Query("UPDATE Requerimentos r SET r.Status = :status, r.Concluido=1,r.Entregue =:date  WHERE r.id =:id")
 	void setStatus(
 			@Param("id") Long id,
-			@Param("status") String status
-	);
+			@Param("status") String status,
+			@Param("date")Date date);
 	
 
 	@Query(value = "SELECT R FROM Requerimentos as R  WHERE R.aluno.Id = ?1")

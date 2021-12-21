@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 @Service
 public class RequerimentoService {
@@ -18,36 +20,33 @@ public class RequerimentoService {
 
 
     public List<RequerimentoVo> buscarTodosRequerimentos(){
-        var teste=repository.findAll();
 
-        var requerimentos= DozerConvert.parseListObjects(
+
+
+        return   DozerConvert.parseListObjects(
                 repository.findAll(),
                 RequerimentoVo.class);
-
-        return  requerimentos;
     }
 
     public RequerimentoVo buscarRequerimentoId(Long id){
-        var requerimento=DozerConvert.parseObject(
+
+        return DozerConvert.parseObject(
                 repository.findById(id),
                 RequerimentoVo.class);
-        return requerimento;
     }
+
     public RequerimentoVo novoRequerimento(RequerimentoVo requerimentoVo){
         var novoRequerimento=DozerConvert.parseObject(
                 requerimentoVo,
                 Requerimentos.class);
-
-        var requerimento=repository.save(
-                novoRequerimento);
+                repository.save(novoRequerimento);
         return requerimentoVo ;
     }
     public RequerimentoVo alterarRequerimento(RequerimentoVo requerimentoVo){
         var novoRequerimento=DozerConvert.parseObject(
                 requerimentoVo,
                 Requerimentos.class);
-        var requerimento=repository.save(
-                novoRequerimento);
+        repository.save(novoRequerimento);
         return requerimentoVo ;
     }
     public ResponseEntity deletarRequerimento(Long id){
@@ -60,31 +59,23 @@ public class RequerimentoService {
 
     public List<RequerimentoVo> buscarPorIdAluno(String id){
         var dados=repository.buscarAlunoId(id);
-        var requerimentos=DozerConvert.parseListObjects(
+
+        return DozerConvert.parseListObjects(
                 dados,
                 RequerimentoVo.class);
+    }
 
-
-
-        return requerimentos;
-    };
-
-//    public RequerimentoVo dadosFiltrados(RequerimentoVo requerimento) {
-//        requerimento.getId();
-//        requerimento.getAluno().getId();
-//        requerimento.getAluno().getEmail();
-//        requerimento.getAluno().getName();
-//        requerimento.getAluno().getLastName();
-//        requerimento.getConcluido();
-//        return requerimento;
-//    }
 
     @Transactional
     public void setResponsavel(Long id, String responsavel, String status){
         repository.setResponsavel(id,responsavel,status);
+
     }
     @Transactional
     public void setStatus(Long id,String status){
-        repository.setStatus(id,status);
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        repository.setStatus(id,status,calendar.getTime());
+
     }
 }
