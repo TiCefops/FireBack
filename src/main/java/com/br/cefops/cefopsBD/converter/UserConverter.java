@@ -15,6 +15,8 @@ public class UserConverter {
 		vo.setUsername(user.getUsername());
 		vo.setFristName(user.getFristName());
 		vo.setLastName(user.getLastName());
+		vo.setCpf(user.getCpf());
+		vo.setAluno(user.getAlunos());
 	
 		return vo;
 	}
@@ -26,6 +28,8 @@ public class UserConverter {
 		entityUser.setUserName(vo.getUsername());
 		entityUser.setFristName(vo.getFristName());
 		entityUser.setLastName(vo.getLastName());
+		entityUser.setCpf(vo.getCpf());
+		entityUser.setAlunos(vo.getAluno());
 	
 		
 		return entityUser;

@@ -100,7 +100,9 @@ public class AuthController {
 	@PostMapping(value = "/signup", produces = "application/json", 
 			consumes =  "application/json")
 	public AccountCredentialSignUpVO signup(@Valid @RequestBody AccountCredentialSignUpVO data) {
+
 		try {
+			System.out.println(data);
 			var user =data.getUsername();
 			var email=data.getEmail();
 			var password=data.getPassword();
@@ -111,8 +113,7 @@ public class AuthController {
 			if (user.isEmpty()) {
 			throw new BadCredentialsException("Erro ao cadastrar !");
 		}
-			
-			serviceUser.saveUser(email, result, user, fristname,lastname);
+			serviceUser.saveUser(email, result, user, fristname,lastname,data.getCpf(),data.getAluno());
 			
 		} catch (AuthenticationException e) {
 			throw new BadCredentialsException("Erro ao cadastrar !");
