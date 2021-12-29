@@ -47,9 +47,6 @@ public class AuthController {
 	UserServices serviceUser;
 
 
-
-//teste
-
    
 	@SuppressWarnings("rawtypes")
 	@PostMapping(value = "/signin", produces = "application/json", 
@@ -103,13 +100,13 @@ public class AuthController {
 
 		try {
 			System.out.println(data);
-			var user =data.getUsername();
-			var email=data.getEmail();
-			var password=data.getPassword();
-			var fristname=data.getFristName();
-			var lastname=data.getLastName();
+			String user =data.getUsername();
+			String email=data.getEmail();
+			String password=data.getPassword();
+			String fristname=data.getFristName();
+			String lastname=data.getLastName();
 			BCryptPasswordEncoder bCryptPasswordEncoder= new BCryptPasswordEncoder(13);
-			var result =bCryptPasswordEncoder.encode(password);
+			String result =bCryptPasswordEncoder.encode(password);
 			if (user.isEmpty()) {
 			throw new BadCredentialsException("Erro ao cadastrar !");
 		}
