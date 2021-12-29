@@ -53,6 +53,7 @@ public class Requerimentos implements Serializable {
 	private String observacao;
 	@Column(columnDefinition = "varchar(20)")
 	private String protocolo;
+	private String pdfLink;
 
 
 
