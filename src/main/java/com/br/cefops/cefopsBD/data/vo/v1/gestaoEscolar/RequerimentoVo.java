@@ -41,6 +41,7 @@ public class RequerimentoVo  implements Serializable {
 	private String statusPagameto;
 	private String observacao;
 	private String protocolo;
+	private String pdfLink;
 
 
 

@@ -1,5 +1,7 @@
 package com.br.cefops.cefopsBD.Services.security;
 
+import com.br.cefops.cefopsBD.domain.Exception.ResourceDuplicateException;
+import com.br.cefops.cefopsBD.domain.escola.AlunosData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -37,7 +39,9 @@ public class UserServices  implements UserDetailsService{
 	}
 
 	
-	public AccountCredentialSignUpVO saveUser( String email,String password,String user, String fristName,String lastName) {
+	public AccountCredentialSignUpVO saveUser(
+			String email,String password,String user, String fristName,String lastName,String cpf,
+			AlunosData aluno) {
 		AccountCredentialSignUpVO credential= new AccountCredentialSignUpVO();
 	var entity= converter.convertVoToEntity(credential);
 	Permission permission= repository2.findByName("Aluno");
@@ -47,15 +51,25 @@ public class UserServices  implements UserDetailsService{
 	entity.setFristName(fristName);
 	entity.setLastName(lastName);
 	entity.setUserName(user);
+	entity.setCpf(cpf);
+	entity.setAlunos(aluno);
 	entity.setAccountNonExpired(true);
 	entity.setAccountNonLocked(true);
 	entity.setCredentialsNonExpired(true);
 	entity.setEnabled(true);
 	entity.setPermissions(java.util.Arrays.asList(permission));
-	var vo=converter.converterEntiteToVo(repository.save(entity));
-	
-		return vo;
-		
+	System.out.println(entity);
+
+
+	if (repository.findUserByEmail(email).getEmail().isEmpty()){
+
+		return  converter.converterEntiteToVo(repository.save(entity));
+
+	}
+	else {throw new ResourceDuplicateException("Email já cadastrado");
+	}
+
+
 	}
 
 }
