@@ -1,5 +1,6 @@
 INSERT INTO `tipos_requerimentos` (`id`, `dias_pentregar`, `grupo`, `name`, `valor`)
 VALUES
+('1', '0',   'Secretaria', 'Comprovante De Matrícula',0.00),
 ('2', '20',   'Secretaria', 'Comprovante de Conclusão',0.00),
 ('3', '5',    'Secretaria', 'Transferência da turma de Teoria',0.00),
 ('4', '30',   'Secretaria', 'Compensação de ausência e faltas ',0.00),
