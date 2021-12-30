@@ -12,6 +12,8 @@ CREATE TABLE IF NOT EXISTS`requerimentos` (
   `nome_aluno` varchar(255) DEFAULT NULL,
   `status_pagameto` varchar(50) DEFAULT 'Aguardando',
   `observacao` varchar(255) DEFAULT NULL,
-  `protocolo` varchar(20) DEFAULT NULL
+  `protocolo` varchar(20) DEFAULT NULL,
+   `pdf_link` varchar(255) DEFAULT NULL
+
 
 ) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;

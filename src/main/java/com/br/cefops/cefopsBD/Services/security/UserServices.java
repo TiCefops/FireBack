@@ -14,6 +14,8 @@ import com.br.cefops.cefopsBD.domain.seguranca.Permission;
 import com.br.cefops.cefopsBD.repository.Seguranca.PermissionRepository;
 import com.br.cefops.cefopsBD.repository.Seguranca.UserRepository;
 
+import java.util.Arrays;
+
 @Service
 public class UserServices  implements UserDetailsService{
 	@Autowired
@@ -57,11 +59,12 @@ public class UserServices  implements UserDetailsService{
 	entity.setAccountNonLocked(true);
 	entity.setCredentialsNonExpired(true);
 	entity.setEnabled(true);
-	entity.setPermissions(java.util.Arrays.asList(permission));
+	entity.setPermissions(Arrays.asList(permission));
 	System.out.println(entity);
 
 
-	if (repository.findUserByEmail(email).getEmail().isEmpty()){
+
+	if (repository.findUserByEmail(email)==null){
 
 		return  converter.converterEntiteToVo(repository.save(entity));
 
