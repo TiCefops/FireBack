@@ -7,4 +7,5 @@ VALUES
 (4,"Diretoria"),
 (5,"Financeiro"),
 (6,"ADM"),
-(7,"Gerência");
+(7,"Gerência"),
+(8,"FinanceiroAdm");
