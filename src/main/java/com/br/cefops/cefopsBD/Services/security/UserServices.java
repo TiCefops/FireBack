@@ -61,7 +61,7 @@ public class UserServices  implements UserDetailsService{
 	System.out.println(entity);
 
 
-	if (repository.findUserByEmail(email).getEmail().isEmpty()){
+	if (repository.findUserByEmail(email)==null){
 
 		return  converter.converterEntiteToVo(repository.save(entity));
 
