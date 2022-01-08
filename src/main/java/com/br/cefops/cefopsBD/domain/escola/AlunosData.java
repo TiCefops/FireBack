@@ -11,6 +11,7 @@ import com.br.cefops.cefopsBD.domain.escola.Documentos.Endereco;
 import com.br.cefops.cefopsBD.domain.escola.Requerimentos.Requerimentos;
 import com.br.cefops.cefopsBD.domain.seguranca.User;
 import com.br.cefops.cefopsBD.domain.escola.Documentos.DocumentosData;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AccessLevel;
 import lombok.Data;
@@ -47,11 +48,14 @@ public class AlunosData implements Serializable  {
 	private Endereco endereco;
 	@OneToMany(mappedBy = "aluno")
 	@Getter(AccessLevel.NONE)
+	@JsonIgnore
 	private List<Requerimentos>  requerimentos;
+	@JsonIgnore
 	@OneToOne(mappedBy = "alunos")
 	private User user;
 	@ManyToMany(mappedBy = "aluno",cascade = CascadeType.REMOVE)
 	@Getter(AccessLevel.NONE)
+	@JsonIgnore
 	private List<CursoData> cursosId;
 	@OneToOne(mappedBy = "alunosId",cascade = CascadeType.REMOVE)
 	private DocumentosData documentos;
