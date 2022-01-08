@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 
-
+import javax.persistence.OneToOne;
 import java.util.Date;
 @Data
 public class DocumentosVo {
@@ -14,27 +14,14 @@ public class DocumentosVo {
     private Long id;
     private String cpf;
     private String rg;
-    private Date dataemissao;
-    private String orgaoemissor;
-    private String estadoemissor;
+    private Date dataemissaorg;
+    private String orgaoemissorrg;
+    private String estadoemissorrg;
     private String tituloeleitor;
     private String zona;
     private String secao;
     private Date dataemissaotitulo;
-    private String estemissortitulo;
-    @JsonIgnore
-    private String reservista;
-    @JsonIgnore
-    private String categoriamilitar;
-    @JsonIgnore
-    private String circoinscricaomitlitar;
-    private String regiaomilitar;
-    @JsonIgnore
-    private Date dataemissaoreservista;
-    @JsonIgnore
-    private String orgaoemissorreservista;
-    @JsonIgnore
-    private String situacaomilitar;
+    private String estadoemissortitulo;
     private String nomedamae;
     private String nomedopai;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
