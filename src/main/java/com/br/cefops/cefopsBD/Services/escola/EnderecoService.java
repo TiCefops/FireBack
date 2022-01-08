@@ -1,6 +1,8 @@
 package com.br.cefops.cefopsBD.Services.escola;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.br.cefops.cefopsBD.converter.DozerConvert;
@@ -16,11 +18,10 @@ public class EnderecoService {
 	EndrerecoRepository repository;
 	
 	
-	public EnderecoVo NovoEndereco(EnderecoVo enderecoVo) {
+	public ResponseEntity<EnderecoVo> NovoEndereco(EnderecoVo enderecoVo) {
 		var entity=DozerConvert.parseObject(enderecoVo, Endereco.class);
 		EnderecoVo vo=DozerConvert.parseObject(repository.save(entity), EnderecoVo.class);
-
-		return vo;
+		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 	
 	public EnderecoVo BuscarEnderecoPorAlunoID(String id) {
@@ -39,8 +40,8 @@ public class EnderecoService {
 
 			return dataNull;
 		}else {
-			EnderecoVo data=DozerConvert.parseObject(entity, EnderecoVo.class);
-			return data;
+
+			return DozerConvert.parseObject(entity, EnderecoVo.class);
 		}
 
 
@@ -59,8 +60,8 @@ public class EnderecoService {
 		entity.setRua(endereco.getRua());
 		entity.setUf(endereco.getUf());
 		
-		var vo=DozerConvert.parseObject(repository.save(entity), EnderecoVo.class);
-		return vo;
+
+		return DozerConvert.parseObject(repository.save(entity), EnderecoVo.class);
 		
 	}
 

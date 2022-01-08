@@ -23,7 +23,7 @@ public class WebConfig implements  WebMvcConfigurer {
 	}
 	@Override
 	public void configureContentNegotiation(ContentNegotiationConfigurer configurer ) {
-		configurer.favorPathExtension(false)
+		configurer
 		.favorParameter(false)
 		.ignoreAcceptHeader(false)
 		.useRegisteredExtensionsOnly(false)

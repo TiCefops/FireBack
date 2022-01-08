@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import com.br.cefops.cefopsBD.Controller.Loja.Pagamento.controller.RequestPagamentosController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -46,7 +47,6 @@ public class AuthController {
 	@Autowired
 	UserServices serviceUser;
 
-
    
 	@SuppressWarnings("rawtypes")
 	@PostMapping(value = "/signin", produces = "application/json", 
@@ -55,8 +55,7 @@ public class AuthController {
 		try {
 			var username = data.getUsername();
 			var pasword = data.getPassword();
-			
-			
+
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, pasword));
 			
 			var user = repository.findByUsername(username);
@@ -78,7 +77,7 @@ public class AuthController {
 				model.put("AlunoId", "000");
 				model.put("foto","https://i.ibb.co/2YYcwWr/sem-foto.png");
 			}else {
-				model.put("AlunoId", aluno.getId().toString());
+				model.put("AlunoId", aluno.getId());
 				model.put("foto",aluno.getPhoto());
 			}
 			model.put("FullName",fullNames);
@@ -87,7 +86,7 @@ public class AuthController {
 			
 		
 			return ok(model);
-		} catch (AuthenticationException e) {
+		} catch (AuthenticationException  e) {
 			throw new BadCredentialsException("Invalid username or password !");
 		}
 	}

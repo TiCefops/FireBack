@@ -1,6 +1,7 @@
 package com.br.cefops.cefopsBD.Controller.GestaoEscolar.Documentos;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,11 +29,7 @@ public class EnderecoController {
 	}
 	
 	@PostMapping(consumes = "application/json")
-	public EnderecoVo novoEndereco(@RequestBody EnderecoVo endereco) {
-		System.out.println(endereco.getAluno().getId());
-		System.out.println(endereco.getUf().length());
-
-
+	public ResponseEntity<EnderecoVo> novoEndereco(@RequestBody EnderecoVo endereco) {
 		return service.NovoEndereco(endereco);
 	}
 	
