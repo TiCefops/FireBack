@@ -20,11 +20,10 @@ public class FinanceInterna  implements Serializable{
 	private String Descricao;
 	private double Valor;
 	private Boolean Pago;
-	private Boolean PagoNaData;
 	private Date DataVencimento;
 	private Date DataPagamento;
 	private int Parcelas;
-	private String parcelaAtual;
+	private int parcelaAtual;
 	@Column(name = "unidade")
 	private String unidade;
 	@Column(name = "meios_pagamento")
@@ -32,13 +31,14 @@ public class FinanceInterna  implements Serializable{
 	@Column(name = "valor_pago")
 	private Double valorPago;
 	private String status;
-	@Column(columnDefinition ="tinyint(1) default 0" )
-	private Boolean aberturaCaiaxa;
-	@Column(columnDefinition ="tinyint(1) default 0" )
-	private Boolean fechamentoCaixa;
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date datadeCriacao;
+	private String tipoMovimentacao;
+
+//	@ManyToOne
+//	@JoinColumn(name = "fluxo_id")
+//	private FluxoCaixa fluxo;
 
 
 

@@ -1,9 +1,12 @@
 package com.br.cefops.cefopsBD.data.vo.v1;
 
+import com.br.cefops.cefopsBD.domain.Financias.FluxoCaixa;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 @Data
 public class FinancesInternaVo implements Serializable {
 	
@@ -12,17 +15,16 @@ public class FinancesInternaVo implements Serializable {
 	private String Descricao;
 	private double Valor;
 	private Boolean Pago;
-	private Boolean PagoNaData;
 	private Date DataVencimento;
 	private Date DataPagamento;
 	private int Parcelas;
-	private String parcelaAtual;
+	private int parcelaAtual;
 	private String unidade;
 	private String meioPagamento;
 	private Double valorPago;
 	private String status;
-	private Boolean aberturaCaiaxa;
-	private Boolean fechamentoCaixa;
 	private Date datadeCriacao;
+	private String tipoMovimentacao;
+//	private FluxoCaixa fluxo;
 
 }
